@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\RoleController;
 use App\Jobs\SendEmailJob;
 use App\Mail\SendEmail;
 use Illuminate\Http\Request;
@@ -24,6 +25,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::apiResource('users', UserController::class);
+
+    Route::resource('roles', RoleController::class);
 });
 
 Route::post('send-email', function(Request $request){
